@@ -22,10 +22,10 @@ func Avg(arr []int) float64 {
 
 // Helper function to calculate median
 func Median(arr []int) float64 {
-	/* To calculate median we sort the slice.
-	Then check if the length is odd or even.
-	If it is odd we return the middle element.
-	If it is even we take average of both middle elements.
+	/* To calculate the median we sort the slice.
+    Then check if the length is odd or even.
+    If it is odd we return the middle element.
+    If it is even we take the average of both middle elements.
 	*/
 	sort.Ints(arr)
 	mNumber := len(arr)/2
@@ -38,9 +38,9 @@ func Median(arr []int) float64 {
 
 // Custom function to calculate n min values
 func Min(arr []int, quantifier int) ([]int, error) {
-	/* Since task requires to get n min/max
-	numbers, we will use custom functions to calculate it.
-	We will use heap data structure to get the best performance.
+	/* Since the task requires getting n min/max
+    numbers, we will use custom functions to calculate it.
+    We will use the heap data structure to get the best performance.
 	*/
 	if quantifier > len(arr) || quantifier < 0 {
 		err := fmt.Errorf("Input is outside of range.")
@@ -80,9 +80,9 @@ func (h *MinHeap) Pop() interface{} {
 
 // Custom function to calculate n max values
 func Max(arr []int, quantifier int) ([]int, error) {
-	/* Since task requires to get n min/max
-	numbers, we will use custom functions to calculate it.
-	We will use heap data structure to get the best performance.
+	/* Since the task requires getting n min/max
+    numbers, we will use custom functions to calculate it.
+    We will use the heap data structure to get the best performance.
 	*/
 	if quantifier > len(arr) || quantifier < 0 {
 		err := fmt.Errorf("Input is outside of range.")

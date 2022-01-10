@@ -9,26 +9,22 @@ import (
 	"github.com/montanaflynn/stats"
 )
 
-// Structure for reading data from request
+// Structure for reading data from the request
 type Data struct {
 	List []int
 	Quantifier int
 }
 
-// Structure to write data to response, int or float depending on output format
+// Structure to write data to response, int or float depending on the output format
 type Result struct {
 	Ints []int
 	Floats []float64
 }
 
+// Informational page
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	fmt.Fprint(w, "<h1>Welcome to Math API!</h1>")
-}
-
-func contact(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "Send email to <a href=\"mailto:support@lenslocked.com\">support@lensllocked.com</a>")
 }
 
 func avg(w http.ResponseWriter, r *http.Request) {
@@ -58,7 +54,7 @@ func avg(w http.ResponseWriter, r *http.Request) {
 func median(w http.ResponseWriter, r *http.Request) {
 	var data Data
 
-	// Read data from request and unmarshal
+	// Read data from the request and unmarshal
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -85,7 +81,7 @@ func median(w http.ResponseWriter, r *http.Request) {
 
 func percentile(w http.ResponseWriter, r *http.Request) {
 	var data Data
-	// Read data from request and unmarshal
+	// Read data from the request and unmarshal
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -113,7 +109,7 @@ func percentile(w http.ResponseWriter, r *http.Request) {
 
 func min(w http.ResponseWriter, r *http.Request) {
 	var data Data
-	// Read data from request and unmarshal
+	// Read data from the request and unmarshal
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -139,7 +135,7 @@ func min(w http.ResponseWriter, r *http.Request) {
 
 func max(w http.ResponseWriter, r *http.Request) {
 	var data Data
-	// Read data from request and unmarshal
+	// Read data from the request and unmarshal
 	err := json.NewDecoder(r.Body).Decode(&data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -172,7 +168,6 @@ func custom404(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", home)
-	r.HandleFunc("/contact", contact)
 	r.HandleFunc("/avg", avg)
 	r.HandleFunc("/median", median)
 	r.HandleFunc("/percentile", percentile)

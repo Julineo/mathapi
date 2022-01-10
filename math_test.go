@@ -13,7 +13,7 @@ func TestAvg(t *testing.T) {
 	}
 }
 
-// Testing the MedianFunction
+// Testing the Median function
 func TestMedian(t *testing.T) {
 	medianEven := Median([]int{1,2,3,4})
 	if medianEven != 2.5 {
